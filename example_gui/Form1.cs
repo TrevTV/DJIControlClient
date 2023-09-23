@@ -56,5 +56,10 @@ namespace ExampleGUI
             bool res = await _drone.IsLandingProtectionEnabled();
             MessageBox.Show(res.ToString());
         }
+
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            await _drone.SetLandingProtection(landingProtectioncheckBox.Checked);
+        }
     }
 }

@@ -35,6 +35,8 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            button5 = new Button();
+            landingProtectioncheckBox = new CheckBox();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -104,11 +106,32 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // button5
+            // 
+            button5.Location = new Point(632, 96);
+            button5.Name = "button5";
+            button5.Size = new Size(156, 23);
+            button5.TabIndex = 7;
+            button5.Text = "Set Landing Protection";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // landingProtectioncheckBox
+            // 
+            landingProtectioncheckBox.AutoSize = true;
+            landingProtectioncheckBox.Location = new Point(611, 101);
+            landingProtectioncheckBox.Name = "landingProtectioncheckBox";
+            landingProtectioncheckBox.Size = new Size(15, 14);
+            landingProtectioncheckBox.TabIndex = 8;
+            landingProtectioncheckBox.UseVisualStyleBackColor = true;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(landingProtectioncheckBox);
+            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -132,5 +155,7 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private Button button5;
+        private CheckBox landingProtectioncheckBox;
     }
 }

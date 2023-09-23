@@ -60,6 +60,15 @@ namespace DJIControlClient
 
             return result.State != null && result.State.Value;
         }
+
+        public async Task SetLandingProtection(bool enabled)
+        {
+            string endpoint = enabled ? "enableLandingProtection" : "disableLandingProtection";
+
+            CommandCompleted result = await Call(endpoint);
+            if (!result.Completed)
+                throw result.ParseError();
+        }
     }
 
     // Methods
