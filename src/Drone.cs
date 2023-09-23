@@ -60,6 +60,7 @@ namespace DJIControlClient
     // "Properties"
     public partial class Drone
     {
+        #region Landing Protection
         public async Task<bool> IsLandingProtectionEnabled()
         {
             CommandCompleted<bool?> result = await Call<bool?>("isLandingProtectionEnabled");
@@ -78,6 +79,10 @@ namespace DJIControlClient
                 throw result.ParseError();
         }
 
+        #endregion
+
+        #region Control Mode
+
         public async Task<ControlMode> GetControlMode()
         {
             CommandCompleted<ControlMode> result = await Call<ControlMode>("getControlMode");
@@ -93,6 +98,8 @@ namespace DJIControlClient
             if (!result.Completed)
                 throw result.ParseError();
         }
+
+        #endregion
     }
 
     // Methods
@@ -110,6 +117,8 @@ namespace DJIControlClient
                 return false;
             }
         }
+
+        #region Takeoff and Landing
 
         public async Task Takeoff()
         {
@@ -131,5 +140,7 @@ namespace DJIControlClient
             if (!result.Completed)
                 throw result.ParseError();
         }
+
+        #endregion
     }
 }
