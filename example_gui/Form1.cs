@@ -61,5 +61,24 @@ namespace ExampleGUI
         {
             await _drone.SetLandingProtection(landingProtectioncheckBox.Checked);
         }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            ControlMode mode = await _drone.GetControlMode();
+            MessageBox.Show(mode.ToString());
+        }
+
+        private async void button6_Click(object sender, EventArgs e)
+        {
+            string str = controlModeCombo.Items[controlModeCombo.SelectedIndex]?.ToString() ?? "";
+            if (string.IsNullOrEmpty(str))
+            {
+                MessageBox.Show("Invalid control mode");
+                return;
+            }
+
+            ControlMode mode = (ControlMode)Enum.Parse(typeof(ControlMode), str);
+            await _drone.SetControlMode(mode);
+        }
     }
 }

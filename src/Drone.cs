@@ -1,13 +1,21 @@
-﻿using DJIControlClient.Exceptions;
+﻿using DJIControlClient.Converters;
+using DJIControlClient.Exceptions;
 using DJIControlClient.Models;
+using System.Net;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace DJIControlClient
 {
     // Root
     public partial class Drone
     {
-        private HttpClient _httpClient;
+        internal HttpClient _httpClient;
+
+        internal readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            Converters = { new ControlModeConverter() }
+        };
 
         public Drone(string ipPort)
         {
@@ -26,7 +34,7 @@ namespace DJIControlClient
         {
             try
             {
-                CommandCompleted? result = await _httpClient.GetFromJsonAsync<CommandCompleted>(endpoint) ?? throw new NotConnectedException();
+                CommandCompleted? result = await _httpClient.GetFromJsonAsync<CommandCompleted>(endpoint, _jsonOptions) ?? throw new NotConnectedException();
                 return result;
             }
             catch (HttpRequestException)
@@ -39,7 +47,7 @@ namespace DJIControlClient
         {
             try
             {
-                CommandCompleted<T>? result = await _httpClient.GetFromJsonAsync<CommandCompleted<T>>(endpoint) ?? throw new NotConnectedException();
+                CommandCompleted<T>? result = await _httpClient.GetFromJsonAsync<CommandCompleted<T>>(endpoint, _jsonOptions) ?? throw new NotConnectedException();
                 return result;
             }
             catch (HttpRequestException)
@@ -66,6 +74,22 @@ namespace DJIControlClient
             string endpoint = enabled ? "enableLandingProtection" : "disableLandingProtection";
 
             CommandCompleted result = await Call(endpoint);
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task<ControlMode> GetControlMode()
+        {
+            CommandCompleted<ControlMode> result = await Call<ControlMode>("getControlMode");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        public async Task SetControlMode(ControlMode mode)
+        {
+            CommandCompleted result = await Call("setControlMode/" + mode.ToString());
             if (!result.Completed)
                 throw result.ParseError();
         }

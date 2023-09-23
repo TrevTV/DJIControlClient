@@ -1,4 +1,5 @@
 ﻿using DJIControlClient.Exceptions;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace DJIControlClient.Models

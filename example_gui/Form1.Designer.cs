@@ -37,6 +37,9 @@
             button4 = new Button();
             button5 = new Button();
             landingProtectioncheckBox = new CheckBox();
+            button6 = new Button();
+            button7 = new Button();
+            controlModeCombo = new ComboBox();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -125,11 +128,43 @@
             landingProtectioncheckBox.TabIndex = 8;
             landingProtectioncheckBox.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            button6.Location = new Point(675, 185);
+            button6.Name = "button6";
+            button6.Size = new Size(113, 23);
+            button6.TabIndex = 9;
+            button6.Text = "Set Control Mode";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(611, 156);
+            button7.Name = "button7";
+            button7.Size = new Size(177, 23);
+            button7.TabIndex = 10;
+            button7.Text = "Get Control Mode";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // controlModeCombo
+            // 
+            controlModeCombo.FormattingEnabled = true;
+            controlModeCombo.Items.AddRange(new object[] { "POSITION", "VELOCITY" });
+            controlModeCombo.Location = new Point(585, 185);
+            controlModeCombo.Name = "controlModeCombo";
+            controlModeCombo.Size = new Size(84, 23);
+            controlModeCombo.TabIndex = 11;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(controlModeCombo);
+            Controls.Add(button7);
+            Controls.Add(button6);
             Controls.Add(landingProtectioncheckBox);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -157,5 +192,8 @@
         private Button button4;
         private Button button5;
         private CheckBox landingProtectioncheckBox;
+        private Button button6;
+        private Button button7;
+        private ComboBox controlModeCombo;
     }
 }
