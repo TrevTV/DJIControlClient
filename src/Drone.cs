@@ -3,7 +3,8 @@ using System.Net.Http.Json;
 
 namespace DJIControlClient
 {
-    public class Drone
+    // Root
+    public partial class Drone
     {
         private HttpClient _httpClient;
 
@@ -20,6 +21,29 @@ namespace DJIControlClient
             };
         }
 
+        internal async Task<CommandCompleted> Call(string endpoint)
+        {
+            try
+            {
+                CommandCompleted? result = await _httpClient.GetFromJsonAsync<CommandCompleted>(endpoint) ?? throw new NotConnectedException();
+                return result;
+            }
+            catch (HttpRequestException)
+            {
+                throw new NotConnectedException();
+            }
+        }
+    }
+
+    // Properties
+    public partial class Drone
+    {
+
+    }
+
+    // Methods
+    public partial class Drone
+    {
         public async Task<bool> IsConnected()
         {
             try
@@ -30,7 +54,7 @@ namespace DJIControlClient
             catch (HttpRequestException)
             {
                 return false;
-            }         
+            }
         }
 
         public async Task Takeoff()
@@ -47,25 +71,11 @@ namespace DJIControlClient
                 throw result.ParseError();
         }
 
-        internal async Task<CommandCompleted> Call(string endpoint)
+        public async Task ConfirmLanding()
         {
-            try
-            {
-                CommandCompleted? result = await _httpClient.GetFromJsonAsync<CommandCompleted>(endpoint) ?? throw new NotConnectedException();
-                return result;
-            }
-            catch (HttpRequestException)
-            {
-                throw new NotConnectedException();
-            }
-        }
-
-        internal bool Throw(Exception? ex)
-        {
-            if (ex == null)
-                return true;
-
-            throw ex;
+            CommandCompleted result = await Call("confirmLanding");
+            if (!result.Completed)
+                throw result.ParseError();
         }
     }
 }
