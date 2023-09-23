@@ -1,15 +1,23 @@
 ﻿using DJIControlClient.Exceptions;
 using System.Text.Json.Serialization;
 
-namespace DJIControlClient
+namespace DJIControlClient.Models
 {
+    // CommandCompleted
     public partial class CommandCompleted
     {
         [JsonPropertyName("completed")]
-        public bool Completed { get; set; }
+        public bool Completed { get; set; } = true;
 
         [JsonPropertyName("errorDescription")]
         public string? ErrorDescription { get; set; }
+    }
+
+    // DroneState
+    public partial class CommandCompleted<T> : CommandCompleted
+    {
+        [JsonPropertyName("state")]
+        public T State { get; set; }
     }
 
     public partial class CommandCompleted

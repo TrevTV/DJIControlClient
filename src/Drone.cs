@@ -1,4 +1,5 @@
 ﻿using DJIControlClient.Exceptions;
+using DJIControlClient.Models;
 using System.Net.Http.Json;
 
 namespace DJIControlClient
@@ -33,12 +34,32 @@ namespace DJIControlClient
                 throw new NotConnectedException();
             }
         }
+
+        internal async Task<CommandCompleted<T>> Call<T>(string endpoint)
+        {
+            try
+            {
+                CommandCompleted<T>? result = await _httpClient.GetFromJsonAsync<CommandCompleted<T>>(endpoint) ?? throw new NotConnectedException();
+                return result;
+            }
+            catch (HttpRequestException)
+            {
+                throw new NotConnectedException();
+            }
+        }
     }
 
-    // Properties
+    // "Properties"
     public partial class Drone
     {
+        public async Task<bool> IsLandingProtectionEnabled()
+        {
+            CommandCompleted<bool?> result = await Call<bool?>("isLandingProtectionEnabled");
+            if (!result.Completed)
+                throw result.ParseError();
 
+            return result.State != null && result.State.Value;
+        }
     }
 
     // Methods
