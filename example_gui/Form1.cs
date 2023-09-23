@@ -12,6 +12,7 @@ namespace ExampleGUI
             InitializeComponent();
 #if DEBUG
             ipAddrTextBox.Text = "192.168.12.131:8080";
+            connectButton_Click(null, null);
 #endif
         }
 
@@ -33,6 +34,27 @@ namespace ExampleGUI
             bool connected = await _drone.IsConnected();
 
             connectedLabel.Text = "Connected: " + connected;
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await _drone.Takeoff();
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            await _drone.Land();
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            await _drone.ConfirmLanding();
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            bool res = await _drone.IsLandingProtectionEnabled();
+            MessageBox.Show(res.ToString());
         }
     }
 }
