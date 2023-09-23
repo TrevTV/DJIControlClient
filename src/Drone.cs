@@ -14,7 +14,11 @@ namespace DJIControlClient
 
         internal readonly JsonSerializerOptions _jsonOptions = new()
         {
-            Converters = { new ControlModeConverter() }
+            Converters =
+            {
+                new ControlModeConverter(),
+                new VelocityProfileConverter()
+            }
         };
 
         public Drone(string ipPort)
@@ -95,6 +99,66 @@ namespace DJIControlClient
         public async Task SetControlMode(ControlMode mode)
         {
             CommandCompleted result = await Call("setControlMode/" + mode.ToString());
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        #endregion
+
+        #region Max Speed
+
+        public async Task<float> GetMaxSpeed()
+        {
+            CommandCompleted<float> result = await Call<float>("getMaxSpeed");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        public async Task SetMaxSpeed(float speed)
+        {
+            CommandCompleted result = await Call("setMaxSpeed/" + speed.ToString());
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        #endregion
+
+        #region Max Angular Speed
+
+        public async Task<float> GetMaxAngularSpeed()
+        {
+            CommandCompleted<float> result = await Call<float>("getMaxAngularSpeed");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        public async Task SetMaxAngularSpeed(float speed)
+        {
+            CommandCompleted result = await Call("setMaxAngularSpeed/" + speed.ToString());
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        #endregion
+
+        #region Velocity Profile
+
+        public async Task<VelocityProfile> GetVelocityProfile()
+        {
+            CommandCompleted<VelocityProfile> result = await Call<VelocityProfile>("getVelocityProfile");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        public async Task SetVelocityProfile(VelocityProfile profile)
+        {
+            CommandCompleted result = await Call("setVelocityProfile/" + profile.ToString());
             if (!result.Completed)
                 throw result.ParseError();
         }

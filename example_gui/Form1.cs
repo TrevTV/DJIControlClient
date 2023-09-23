@@ -80,5 +80,56 @@ namespace ExampleGUI
             ControlMode mode = (ControlMode)Enum.Parse(typeof(ControlMode), str);
             await _drone.SetControlMode(mode);
         }
+
+        private async void button8_Click(object sender, EventArgs e)
+        {
+            float speed = await _drone.GetMaxSpeed();
+            MessageBox.Show(speed.ToString());
+        }
+
+        private async void button9_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(maxSpeedTextBox.Text, out float speed))
+            {
+                await _drone.SetMaxSpeed(speed);
+            }
+            else
+                MessageBox.Show("Invalid speed");
+        }
+
+        private async void button11_Click(object sender, EventArgs e)
+        {
+            float speed = await _drone.GetMaxAngularSpeed();
+            MessageBox.Show(speed.ToString());
+        }
+
+        private async void button10_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(maxAngSpeedTextBox.Text, out float speed))
+            {
+                await _drone.SetMaxAngularSpeed(speed);
+            }
+            else
+                MessageBox.Show("Invalid speed");
+        }
+
+        private async void button12_Click(object sender, EventArgs e)
+        {
+            VelocityProfile profile = await _drone.GetVelocityProfile();
+            MessageBox.Show(profile.ToString());
+        }
+
+        private async void button13_Click(object sender, EventArgs e)
+        {
+            string str = velocProfCombo.Items[velocProfCombo.SelectedIndex]?.ToString() ?? "";
+            if (string.IsNullOrEmpty(str))
+            {
+                MessageBox.Show("Invalid control mode");
+                return;
+            }
+
+            VelocityProfile profile = (VelocityProfile)Enum.Parse(typeof(VelocityProfile), str);
+            await _drone.SetVelocityProfile(profile);
+        }
     }
 }
