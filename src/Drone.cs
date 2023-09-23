@@ -9,6 +9,8 @@
             if (!ipPort.EndsWith('/'))
                 ipPort += '/';
 
+            ipPort = "http://" + ipPort;
+
             _httpClient = new()
             {
                 BaseAddress = new Uri(ipPort)
