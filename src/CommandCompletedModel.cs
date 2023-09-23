@@ -14,13 +14,10 @@ namespace DJIControlClient
 
     public partial class CommandCompleted
     {
-        public Exception? ParseError()
+        public Exception ParseError()
         {
-            if (ErrorDescription == null || Completed)
-                return null;
-
             // case isnt consistent in errors so i'm force lowering them
-            string err = ErrorDescription.ToLower();
+            string err = ErrorDescription?.ToLower() ?? string.Empty;
 
             return err switch
             {

@@ -5,12 +5,6 @@ namespace DJIControlClient
 {
     public class Drone
     {
-        /// <summary>
-        ///  If true, Drone will throw exceptions. If false, it will only return false.
-        ///  This does not include NotConnectedException
-        /// </summary>
-        public bool ThrowErrors { get; set; }
-
         private HttpClient _httpClient;
 
         public Drone(string ipPort)
@@ -43,7 +37,7 @@ namespace DJIControlClient
         {
             CommandCompleted result = await Call("takeoff");
             if (!result.Completed)
-                return Throw(result.ParseError());
+                throw result.ParseError();
 
             return true;
         }
@@ -52,7 +46,7 @@ namespace DJIControlClient
         {
             CommandCompleted result = await Call("land");
             if (!result.Completed)
-                return Throw(result.ParseError());
+                throw result.ParseError();
 
             return true;
         }
@@ -75,10 +69,7 @@ namespace DJIControlClient
             if (ex == null)
                 return true;
 
-            if (ThrowErrors)
-                throw ex;
-
-            return false;
+            throw ex;
         }
     }
 }
