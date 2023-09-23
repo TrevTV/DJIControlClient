@@ -19,8 +19,16 @@
 
         public async Task<bool> IsConnected()
         {
-            string? connected = await _httpClient.GetStringAsync("");
-            return connected != null;
+            try
+            {
+                string? connected = await _httpClient.GetStringAsync("");
+                return connected != null;
+            }
+            catch (HttpRequestException)
+            {
+                return false;
+            }
+            
         }
     }
 }
