@@ -33,22 +33,18 @@ namespace DJIControlClient
             }         
         }
 
-        public async Task<bool> Takeoff()
+        public async Task Takeoff()
         {
             CommandCompleted result = await Call("takeoff");
             if (!result.Completed)
                 throw result.ParseError();
-
-            return true;
         }
 
-        public async Task<bool> Land()
+        public async Task Land()
         {
             CommandCompleted result = await Call("land");
             if (!result.Completed)
                 throw result.ParseError();
-
-            return true;
         }
 
         internal async Task<CommandCompleted> Call(string endpoint)
