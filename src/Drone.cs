@@ -248,5 +248,65 @@ namespace DJIControlClient
         }
 
         #endregion
+
+        #region Movement
+
+        public async Task MoveForward(float dist)
+        {
+            CommandCompleted result = await Call($"moveForward/{dist}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task MoveBackward(float dist)
+        {
+            CommandCompleted result = await Call($"moveBackward/{dist}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task MoveLeft(float dist)
+        {
+            CommandCompleted result = await Call($"moveLeft/{dist}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task MoveRight(float dist)
+        {
+            CommandCompleted result = await Call($"moveRight/{dist}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task MoveUp(float dist)
+        {
+            CommandCompleted result = await Call($"moveUp/{dist}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task MoveDown(float dist)
+        {
+            CommandCompleted result = await Call($"moveDown/{dist}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task RotateClockwise(float angle)
+        {
+            CommandCompleted result = await Call($"rotateClockwise/{angle}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task RotateCounterClockwise(float angle)
+        {
+            CommandCompleted result = await Call($"rotateCounterClockwise/{angle}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        #endregion
     }
 }

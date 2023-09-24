@@ -1,7 +1,6 @@
 using DJIControlClient;
 using DJIControlClient.Models;
 using System.Text.RegularExpressions;
-using static System.Windows.Forms.AxHost;
 
 namespace ExampleGUI
 {
@@ -169,6 +168,86 @@ namespace ExampleGUI
 
                 MessageBox.Show(states[i].ToString());
             }
+        }
+
+        private async void button19_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(twodimDist.Text, out float dist))
+            {
+                await _drone.MoveForward(dist);
+            }
+            else
+                MessageBox.Show("Invalid distance");
+        }
+
+        private async void button22_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(twodimDist.Text, out float dist))
+            {
+                await _drone.MoveBackward(dist);
+            }
+            else
+                MessageBox.Show("Invalid distance");
+        }
+
+        private async void button20_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(twodimDist.Text, out float dist))
+            {
+                await _drone.MoveLeft(dist);
+            }
+            else
+                MessageBox.Show("Invalid distance");
+        }
+
+        private async void button21_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(twodimDist.Text, out float dist))
+            {
+                await _drone.MoveRight(dist);
+            }
+            else
+                MessageBox.Show("Invalid distance");
+        }
+
+        private async void button26_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(threedDist.Text, out float dist))
+            {
+                await _drone.MoveUp(dist);
+            }
+            else
+                MessageBox.Show("Invalid distance");
+        }
+
+        private async void button25_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(threedDist.Text, out float dist))
+            {
+                await _drone.MoveDown(dist);
+            }
+            else
+                MessageBox.Show("Invalid distance");
+        }
+
+        private async void button23_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(angleTextBox.Text, out float angle))
+            {
+                await _drone.RotateCounterClockwise(angle);
+            }
+            else
+                MessageBox.Show("Invalid angle");
+        }
+
+        private async void button24_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(angleTextBox.Text, out float angle))
+            {
+                await _drone.RotateClockwise(angle);
+            }
+            else
+                MessageBox.Show("Invalid angle");
         }
     }
 }

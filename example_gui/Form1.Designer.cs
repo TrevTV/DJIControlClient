@@ -55,6 +55,17 @@
             label1 = new Label();
             button17 = new Button();
             button18 = new Button();
+            button19 = new Button();
+            button20 = new Button();
+            button21 = new Button();
+            button22 = new Button();
+            button23 = new Button();
+            button24 = new Button();
+            button25 = new Button();
+            button26 = new Button();
+            angleTextBox = new TextBox();
+            twodimDist = new TextBox();
+            threedDist = new TextBox();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -290,7 +301,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(195, 278);
+            label1.Location = new Point(12, 256);
             label1.Name = "label1";
             label1.Size = new Size(89, 15);
             label1.TabIndex = 24;
@@ -316,11 +327,128 @@
             button18.UseVisualStyleBackColor = true;
             button18.Click += button18_Click;
             // 
+            // button19
+            // 
+            button19.Location = new Point(276, 187);
+            button19.Name = "button19";
+            button19.Size = new Size(75, 23);
+            button19.TabIndex = 27;
+            button19.Text = "Forward";
+            button19.UseVisualStyleBackColor = true;
+            button19.Click += button19_Click;
+            // 
+            // button20
+            // 
+            button20.Location = new Point(204, 216);
+            button20.Name = "button20";
+            button20.Size = new Size(75, 23);
+            button20.TabIndex = 28;
+            button20.Text = "Left";
+            button20.UseVisualStyleBackColor = true;
+            button20.Click += button20_Click;
+            // 
+            // button21
+            // 
+            button21.Location = new Point(347, 216);
+            button21.Name = "button21";
+            button21.Size = new Size(75, 23);
+            button21.TabIndex = 29;
+            button21.Text = "Right";
+            button21.UseVisualStyleBackColor = true;
+            button21.Click += button21_Click;
+            // 
+            // button22
+            // 
+            button22.Location = new Point(276, 245);
+            button22.Name = "button22";
+            button22.Size = new Size(75, 23);
+            button22.TabIndex = 30;
+            button22.Text = "Backward";
+            button22.UseVisualStyleBackColor = true;
+            button22.Click += button22_Click;
+            // 
+            // button23
+            // 
+            button23.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            button23.Location = new Point(204, 128);
+            button23.Name = "button23";
+            button23.Size = new Size(75, 32);
+            button23.TabIndex = 31;
+            button23.Text = "↶";
+            button23.UseVisualStyleBackColor = true;
+            button23.Click += button23_Click;
+            // 
+            // button24
+            // 
+            button24.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            button24.Location = new Point(347, 128);
+            button24.Name = "button24";
+            button24.Size = new Size(75, 32);
+            button24.TabIndex = 32;
+            button24.Text = "↷";
+            button24.UseVisualStyleBackColor = true;
+            button24.Click += button24_Click;
+            // 
+            // button25
+            // 
+            button25.Location = new Point(456, 245);
+            button25.Name = "button25";
+            button25.Size = new Size(75, 23);
+            button25.TabIndex = 34;
+            button25.Text = "Down";
+            button25.UseVisualStyleBackColor = true;
+            button25.Click += button25_Click;
+            // 
+            // button26
+            // 
+            button26.Location = new Point(456, 187);
+            button26.Name = "button26";
+            button26.Size = new Size(75, 23);
+            button26.TabIndex = 33;
+            button26.Text = "Up";
+            button26.UseVisualStyleBackColor = true;
+            button26.Click += button26_Click;
+            // 
+            // angleTextBox
+            // 
+            angleTextBox.Location = new Point(285, 129);
+            angleTextBox.Name = "angleTextBox";
+            angleTextBox.PlaceholderText = "Angle";
+            angleTextBox.Size = new Size(56, 23);
+            angleTextBox.TabIndex = 35;
+            // 
+            // twodimDist
+            // 
+            twodimDist.Location = new Point(285, 217);
+            twodimDist.Name = "twodimDist";
+            twodimDist.PlaceholderText = "Distance";
+            twodimDist.Size = new Size(56, 23);
+            twodimDist.TabIndex = 36;
+            // 
+            // threedDist
+            // 
+            threedDist.Location = new Point(465, 216);
+            threedDist.Name = "threedDist";
+            threedDist.PlaceholderText = "Distance";
+            threedDist.Size = new Size(56, 23);
+            threedDist.TabIndex = 37;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(threedDist);
+            Controls.Add(twodimDist);
+            Controls.Add(angleTextBox);
+            Controls.Add(button25);
+            Controls.Add(button26);
+            Controls.Add(button24);
+            Controls.Add(button23);
+            Controls.Add(button22);
+            Controls.Add(button21);
+            Controls.Add(button20);
+            Controls.Add(button19);
             Controls.Add(button18);
             Controls.Add(button17);
             Controls.Add(label1);
@@ -384,5 +512,16 @@
         private Label label1;
         private Button button17;
         private Button button18;
+        private Button button19;
+        private Button button20;
+        private Button button21;
+        private Button button22;
+        private Button button23;
+        private Button button24;
+        private Button button25;
+        private Button button26;
+        private TextBox angleTextBox;
+        private TextBox twodimDist;
+        private TextBox threedDist;
     }
 }
