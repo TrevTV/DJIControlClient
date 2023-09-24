@@ -249,5 +249,41 @@ namespace ExampleGUI
             else
                 MessageBox.Show("Invalid angle");
         }
+
+        private async void button30_Click(object sender, EventArgs e)
+        {
+            await _drone.StartVelocityControl();
+        }
+
+        private async void button27_Click(object sender, EventArgs e)
+        {
+            await _drone.StopVelocityControl();
+        }
+
+        private async void button28_Click(object sender, EventArgs e)
+        {
+            Velocity vel = await _drone.GetCurrentVelocity();
+            MessageBox.Show(vel.ToString());
+        }
+
+        private async void button29_Click(object sender, EventArgs e)
+        {
+            string[] rawVals = velocityTextBox.Text.Split(',');
+            if (float.TryParse(rawVals[0], out float x)
+                && float.TryParse(rawVals[1], out float y)
+                && float.TryParse(rawVals[2], out float z)
+                && float.TryParse(rawVals[3], out float yawRate))
+            {
+                await _drone.SetVelocity(x, y, z, yawRate);
+            }
+            else
+                MessageBox.Show("Invalid velocity");
+        }
+
+        private async void button31_Click(object sender, EventArgs e)
+        {
+            float heading = await _drone.GetHeading();
+            MessageBox.Show(heading.ToString());
+        }
     }
 }

@@ -66,6 +66,12 @@
             angleTextBox = new TextBox();
             twodimDist = new TextBox();
             threedDist = new TextBox();
+            button27 = new Button();
+            button28 = new Button();
+            button29 = new Button();
+            button30 = new Button();
+            velocityTextBox = new TextBox();
+            button31 = new Button();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -270,7 +276,7 @@
             // 
             // button14
             // 
-            button14.Location = new Point(12, 415);
+            button14.Location = new Point(9, 457);
             button14.Name = "button14";
             button14.Size = new Size(177, 23);
             button14.TabIndex = 21;
@@ -280,7 +286,7 @@
             // 
             // button15
             // 
-            button15.Location = new Point(12, 274);
+            button15.Location = new Point(9, 316);
             button15.Name = "button15";
             button15.Size = new Size(177, 23);
             button15.TabIndex = 22;
@@ -290,7 +296,7 @@
             // 
             // button16
             // 
-            button16.Location = new Point(12, 303);
+            button16.Location = new Point(9, 345);
             button16.Name = "button16";
             button16.Size = new Size(177, 23);
             button16.TabIndex = 23;
@@ -301,7 +307,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 256);
+            label1.Location = new Point(9, 298);
             label1.Name = "label1";
             label1.Size = new Size(89, 15);
             label1.TabIndex = 24;
@@ -309,7 +315,7 @@
             // 
             // button17
             // 
-            button17.Location = new Point(12, 332);
+            button17.Location = new Point(9, 374);
             button17.Name = "button17";
             button17.Size = new Size(177, 23);
             button17.TabIndex = 25;
@@ -319,7 +325,7 @@
             // 
             // button18
             // 
-            button18.Location = new Point(12, 361);
+            button18.Location = new Point(9, 403);
             button18.Name = "button18";
             button18.Size = new Size(177, 23);
             button18.TabIndex = 26;
@@ -433,11 +439,76 @@
             threedDist.Size = new Size(56, 23);
             threedDist.TabIndex = 37;
             // 
+            // button27
+            // 
+            button27.Location = new Point(226, 345);
+            button27.Name = "button27";
+            button27.Size = new Size(177, 23);
+            button27.TabIndex = 41;
+            button27.Text = "Stop Velocity Control";
+            button27.UseVisualStyleBackColor = true;
+            button27.Click += button27_Click;
+            // 
+            // button28
+            // 
+            button28.Location = new Point(226, 403);
+            button28.Name = "button28";
+            button28.Size = new Size(177, 23);
+            button28.TabIndex = 40;
+            button28.Text = "Get Current Velocity";
+            button28.UseVisualStyleBackColor = true;
+            button28.Click += button28_Click;
+            // 
+            // button29
+            // 
+            button29.Location = new Point(324, 374);
+            button29.Name = "button29";
+            button29.Size = new Size(79, 23);
+            button29.TabIndex = 39;
+            button29.Text = "Set Velocity";
+            button29.UseVisualStyleBackColor = true;
+            button29.Click += button29_Click;
+            // 
+            // button30
+            // 
+            button30.Location = new Point(226, 316);
+            button30.Name = "button30";
+            button30.Size = new Size(177, 23);
+            button30.TabIndex = 38;
+            button30.Text = "Start Velocity Control";
+            button30.UseVisualStyleBackColor = true;
+            button30.Click += button30_Click;
+            // 
+            // velocityTextBox
+            // 
+            velocityTextBox.Location = new Point(226, 374);
+            velocityTextBox.Name = "velocityTextBox";
+            velocityTextBox.PlaceholderText = "X,Y,Z,YawRate";
+            velocityTextBox.Size = new Size(92, 23);
+            velocityTextBox.TabIndex = 42;
+            velocityTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // button31
+            // 
+            button31.Location = new Point(611, 456);
+            button31.Name = "button31";
+            button31.Size = new Size(177, 23);
+            button31.TabIndex = 43;
+            button31.Text = "Get Heading";
+            button31.UseVisualStyleBackColor = true;
+            button31.Click += button31_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 491);
+            Controls.Add(button31);
+            Controls.Add(velocityTextBox);
+            Controls.Add(button27);
+            Controls.Add(button28);
+            Controls.Add(button29);
+            Controls.Add(button30);
             Controls.Add(threedDist);
             Controls.Add(twodimDist);
             Controls.Add(angleTextBox);
@@ -523,5 +594,11 @@
         private TextBox angleTextBox;
         private TextBox twodimDist;
         private TextBox threedDist;
+        private Button button27;
+        private Button button28;
+        private Button button29;
+        private Button button30;
+        private TextBox velocityTextBox;
+        private Button button31;
     }
 }

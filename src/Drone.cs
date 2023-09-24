@@ -308,5 +308,52 @@ namespace DJIControlClient
         }
 
         #endregion
+
+        #region Velocity Control
+
+        public async Task StartVelocityControl()
+        {
+            CommandCompleted result = await Call("startVelocityControl");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task SetVelocity(float xVelocity, float yVelocity, float zVelocity, float yawRate)
+        {
+            CommandCompleted result = await Call($"setVelocityCommand/{xVelocity}/{yVelocity}/{zVelocity}/{yawRate}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task<Velocity> GetCurrentVelocity()
+        {
+            CommandCompleted<Velocity> result = await Call<Velocity>("getCurrentVelocityCommand");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        public async Task StopVelocityControl()
+        {
+            CommandCompleted result = await Call("stopVelocityControl");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        #endregion
+
+        #region Other
+
+        public async Task<float> GetHeading()
+        {
+            CommandCompleted<float> result = await Call<float>("getHeading");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        #endregion
     }
 }
