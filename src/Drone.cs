@@ -63,6 +63,32 @@ namespace DJIControlClient
     // "Properties"
     public partial class Drone
     {
+        /// <summary>
+        /// Returns current heading angle.
+        /// </summary>
+        /// <returns>Current heading angle with respect to true north</returns>
+        public async Task<float> GetHeading()
+        {
+            CommandCompleted<float> result = await Call<float>("getHeading");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        /// <summary>
+        /// Returns current altitude.
+        /// </summary>
+        /// <returns>Current altitude in meters</returns>
+        public async Task<float> GetAltitude()
+        {
+            CommandCompleted<float> result = await Call<float>("getAltitude");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
         #region Landing Protection
 
         /// <summary>
@@ -224,19 +250,6 @@ namespace DJIControlClient
             {
                 return false;
             }
-        }
-
-        /// <summary>
-        /// Returns current heading angle.
-        /// </summary>
-        /// <returns>Current heading angle with respect to true north</returns>
-        public async Task<float> GetHeading()
-        {
-            CommandCompleted<float> result = await Call<float>("getHeading");
-            if (!result.Completed)
-                throw result.ParseError();
-
-            return result.State;
         }
 
         #region Takeoff and Landing

@@ -72,6 +72,7 @@
             button30 = new Button();
             velocityTextBox = new TextBox();
             button31 = new Button();
+            button32 = new Button();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -498,11 +499,22 @@
             button31.UseVisualStyleBackColor = true;
             button31.Click += button31_Click;
             // 
+            // button32
+            // 
+            button32.Location = new Point(611, 427);
+            button32.Name = "button32";
+            button32.Size = new Size(177, 23);
+            button32.TabIndex = 44;
+            button32.Text = "Get Altitude";
+            button32.UseVisualStyleBackColor = true;
+            button32.Click += button32_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 491);
+            Controls.Add(button32);
             Controls.Add(button31);
             Controls.Add(velocityTextBox);
             Controls.Add(button27);
@@ -600,5 +612,6 @@
         private Button button30;
         private TextBox velocityTextBox;
         private Button button31;
+        private Button button32;
     }
 }

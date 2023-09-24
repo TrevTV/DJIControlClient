@@ -285,5 +285,11 @@ namespace ExampleGUI
             float heading = await _drone.GetHeading();
             MessageBox.Show(heading.ToString());
         }
+
+        private async void button32_Click(object sender, EventArgs e)
+        {
+            float altitude = await _drone.GetAltitude();
+            MessageBox.Show(altitude.ToString());
+        }
     }
 }
