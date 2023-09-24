@@ -73,6 +73,7 @@
             velocityTextBox = new TextBox();
             button31 = new Button();
             button32 = new Button();
+            button33 = new Button();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -509,11 +510,22 @@
             button32.UseVisualStyleBackColor = true;
             button32.Click += button32_Click;
             // 
+            // button33
+            // 
+            button33.Location = new Point(12, 99);
+            button33.Name = "button33";
+            button33.Size = new Size(75, 23);
+            button33.TabIndex = 45;
+            button33.Text = "Reboot";
+            button33.UseVisualStyleBackColor = true;
+            button33.Click += button33_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 491);
+            Controls.Add(button33);
             Controls.Add(button32);
             Controls.Add(button31);
             Controls.Add(velocityTextBox);
@@ -613,5 +625,6 @@
         private TextBox velocityTextBox;
         private Button button31;
         private Button button32;
+        private Button button33;
     }
 }

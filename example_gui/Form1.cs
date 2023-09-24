@@ -291,5 +291,10 @@ namespace ExampleGUI
             float altitude = await _drone.GetAltitude();
             MessageBox.Show(altitude.ToString());
         }
+
+        private async void button33_Click(object sender, EventArgs e)
+        {
+            await _drone.Reboot();
+        }
     }
 }

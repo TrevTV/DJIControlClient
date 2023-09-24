@@ -252,6 +252,20 @@ namespace DJIControlClient
             }
         }
 
+        /// <summary>
+        /// Reboot the core component of the aircraft.
+        /// For Matrice 300 RTK, reboot the aircraft.
+        /// For Mavic Mini, DJI Mini SE, reboot the airlink.
+        /// For Mavic Air 2, reboot the battery.
+        /// Others, reboot the flight controller.
+        /// </summary>
+        public async Task Reboot()
+        {
+            CommandCompleted result = await Call("reboot");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
         #region Takeoff and Landing
 
         /// <summary>
