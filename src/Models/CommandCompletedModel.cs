@@ -1,5 +1,4 @@
 ﻿using DJIControlClient.Exceptions;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace DJIControlClient.Models
@@ -25,8 +24,11 @@ namespace DJIControlClient.Models
     {
         public Exception ParseError()
         {
+            if (ErrorDescription == null)
+                return new Exception();
+
             // case isnt consistent in errors so i'm force lowering them
-            string err = ErrorDescription?.ToLower() ?? string.Empty;
+            string err = ErrorDescription.ToLower();
 
             return err switch
             {
