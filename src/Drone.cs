@@ -505,5 +505,75 @@ namespace DJIControlClient
         }
 
         #endregion
+
+        #region Camera & Gimbal
+
+        /// <summary>
+        /// Captures an image.
+        /// </summary>
+        public async Task CaptureShot()
+        {
+            CommandCompleted result = await Call("captureShot");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        /// <summary>
+        /// Starts recording.
+        /// </summary>
+        public async Task StartVideoRecording()
+        {
+            CommandCompleted result = await Call("startVideoRecording");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        /// <summary>
+        /// Stops recording.
+        /// </summary>
+        public async Task StopVideoRecording()
+        {
+            CommandCompleted result = await Call("stopVideoRecording");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        /// <summary>
+        /// Sets the gimbal's pitch.
+        /// </summary>
+        /// <param name="angle">Wanted gimbal angle</param>
+        public async Task SetGimbalPitch(float angle)
+        {
+            CommandCompleted result = await Call($"pitchGimbal/{angle}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        /// <summary>
+        /// Captures a panorama.
+        /// </summary>
+        public async Task CapturePanorama()
+        {
+            CommandCompleted result = await Call("capturePanorama");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        /// <summary>
+        /// Gets the preview of media file at a given index.
+        /// </summary>
+        /// <param name="index">Index of media file</param>
+        /// <returns>Base64 encoded string of preview image</returns>
+        // TODO: Check returned format
+        public async Task<string> GetMediaPreview(int index)
+        {
+            CommandCompleted<string> result = await Call<string>($"fetchPreviewFromIndex/{index}");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        #endregion
     }
 }

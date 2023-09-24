@@ -296,5 +296,51 @@ namespace ExampleGUI
         {
             await _drone.Reboot();
         }
+
+        private async void button34_Click(object sender, EventArgs e)
+        {
+            await _drone.CaptureShot();
+        }
+
+        private async void button35_Click(object sender, EventArgs e)
+        {
+            await _drone.CapturePanorama();
+        }
+
+        private async void button36_Click(object sender, EventArgs e)
+        {
+            await _drone.StartVideoRecording();
+        }
+
+        private async void button37_Click(object sender, EventArgs e)
+        {
+            await _drone.StopVideoRecording();
+        }
+
+        private async void button38_Click(object sender, EventArgs e)
+        {
+            if (float.TryParse(gimbalPitchTextBox.Text, out float angle))
+            {
+                await _drone.SetGimbalPitch(angle);
+            }
+            else
+                MessageBox.Show("Invalid angle");
+        }
+
+        private async void button40_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(angleTextBox.Text, out int idx))
+            {
+                string data = await _drone.GetMediaPreview(idx);
+            }
+            else
+                MessageBox.Show("Invalid angle");
+        }
+
+        private async void button39_Click(object sender, EventArgs e)
+        {
+            string data = await _drone.GetMediaPreview(0);
+            System.Diagnostics.Debug.WriteLine(data);
+        }
     }
 }

@@ -74,6 +74,15 @@
             button31 = new Button();
             button32 = new Button();
             button33 = new Button();
+            button34 = new Button();
+            button35 = new Button();
+            button36 = new Button();
+            button37 = new Button();
+            gimbalPitchTextBox = new TextBox();
+            button38 = new Button();
+            button39 = new Button();
+            mediaIndexTextbox = new TextBox();
+            button40 = new Button();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -520,11 +529,106 @@
             button33.UseVisualStyleBackColor = true;
             button33.Click += button33_Click;
             // 
+            // button34
+            // 
+            button34.Location = new Point(226, 541);
+            button34.Name = "button34";
+            button34.Size = new Size(177, 23);
+            button34.TabIndex = 46;
+            button34.Text = "Capture Shot";
+            button34.UseVisualStyleBackColor = true;
+            button34.Click += button34_Click;
+            // 
+            // button35
+            // 
+            button35.Location = new Point(226, 570);
+            button35.Name = "button35";
+            button35.Size = new Size(177, 23);
+            button35.TabIndex = 47;
+            button35.Text = "Capture Panorama";
+            button35.UseVisualStyleBackColor = true;
+            button35.Click += button35_Click;
+            // 
+            // button36
+            // 
+            button36.Location = new Point(226, 599);
+            button36.Name = "button36";
+            button36.Size = new Size(177, 23);
+            button36.TabIndex = 48;
+            button36.Text = "Start Video Recording";
+            button36.UseVisualStyleBackColor = true;
+            button36.Click += button36_Click;
+            // 
+            // button37
+            // 
+            button37.Location = new Point(226, 628);
+            button37.Name = "button37";
+            button37.Size = new Size(177, 23);
+            button37.TabIndex = 49;
+            button37.Text = "Stop Video Recording";
+            button37.UseVisualStyleBackColor = true;
+            button37.Click += button37_Click;
+            // 
+            // gimbalPitchTextBox
+            // 
+            gimbalPitchTextBox.Location = new Point(527, 541);
+            gimbalPitchTextBox.Name = "gimbalPitchTextBox";
+            gimbalPitchTextBox.Size = new Size(59, 23);
+            gimbalPitchTextBox.TabIndex = 51;
+            gimbalPitchTextBox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // button38
+            // 
+            button38.Location = new Point(409, 541);
+            button38.Name = "button38";
+            button38.Size = new Size(112, 23);
+            button38.TabIndex = 50;
+            button38.Text = "Set Gimbal Pitch";
+            button38.UseVisualStyleBackColor = true;
+            button38.Click += button38_Click;
+            // 
+            // button39
+            // 
+            button39.Location = new Point(409, 599);
+            button39.Name = "button39";
+            button39.Size = new Size(177, 23);
+            button39.TabIndex = 52;
+            button39.Text = "Get Most Recent Preview";
+            button39.UseVisualStyleBackColor = true;
+            button39.Click += button39_Click;
+            // 
+            // mediaIndexTextbox
+            // 
+            mediaIndexTextbox.Location = new Point(527, 570);
+            mediaIndexTextbox.Name = "mediaIndexTextbox";
+            mediaIndexTextbox.Size = new Size(59, 23);
+            mediaIndexTextbox.TabIndex = 54;
+            mediaIndexTextbox.TextAlign = HorizontalAlignment.Center;
+            // 
+            // button40
+            // 
+            button40.Location = new Point(409, 570);
+            button40.Name = "button40";
+            button40.Size = new Size(112, 23);
+            button40.TabIndex = 53;
+            button40.Text = "Get Preview";
+            button40.UseVisualStyleBackColor = true;
+            button40.Click += button40_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 491);
+            ClientSize = new Size(800, 691);
+            Controls.Add(mediaIndexTextbox);
+            Controls.Add(button40);
+            Controls.Add(button39);
+            Controls.Add(gimbalPitchTextBox);
+            Controls.Add(button38);
+            Controls.Add(button37);
+            Controls.Add(button36);
+            Controls.Add(button35);
+            Controls.Add(button34);
             Controls.Add(button33);
             Controls.Add(button32);
             Controls.Add(button31);
@@ -626,5 +730,14 @@
         private Button button31;
         private Button button32;
         private Button button33;
+        private Button button34;
+        private Button button35;
+        private Button button36;
+        private Button button37;
+        private TextBox gimbalPitchTextBox;
+        private Button button38;
+        private Button button39;
+        private TextBox mediaIndexTextbox;
+        private Button button40;
     }
 }
