@@ -1,7 +1,6 @@
 ﻿using DJIControlClient.Converters;
 using DJIControlClient.Exceptions;
 using DJIControlClient.Models;
-using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 
@@ -98,7 +97,7 @@ namespace DJIControlClient
 
         public async Task SetControlMode(ControlMode mode)
         {
-            CommandCompleted result = await Call("setControlMode/" + mode.ToString());
+            CommandCompleted result = await Call($"setControlMode/{mode}");
             if (!result.Completed)
                 throw result.ParseError();
         }
@@ -118,7 +117,7 @@ namespace DJIControlClient
 
         public async Task SetMaxSpeed(float speed)
         {
-            CommandCompleted result = await Call("setMaxSpeed/" + speed.ToString());
+            CommandCompleted result = await Call($"setMaxSpeed/{speed}");
             if (!result.Completed)
                 throw result.ParseError();
         }
@@ -138,7 +137,7 @@ namespace DJIControlClient
 
         public async Task SetMaxAngularSpeed(float speed)
         {
-            CommandCompleted result = await Call("setMaxAngularSpeed/" + speed.ToString());
+            CommandCompleted result = await Call($"setMaxAngularSpeed/{speed}");
             if (!result.Completed)
                 throw result.ParseError();
         }
@@ -158,7 +157,7 @@ namespace DJIControlClient
 
         public async Task SetVelocityProfile(VelocityProfile profile)
         {
-            CommandCompleted result = await Call("setVelocityProfile/" + profile.ToString());
+            CommandCompleted result = await Call($"setVelocityProfile/{profile}");
             if (!result.Completed)
                 throw result.ParseError();
         }
