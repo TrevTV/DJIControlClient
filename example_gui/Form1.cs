@@ -1,5 +1,7 @@
 using DJIControlClient;
+using DJIControlClient.Models;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.AxHost;
 
 namespace ExampleGUI
 {
@@ -130,6 +132,43 @@ namespace ExampleGUI
 
             VelocityProfile profile = (VelocityProfile)Enum.Parse(typeof(VelocityProfile), str);
             await _drone.SetVelocityProfile(profile);
+        }
+
+        private async void button14_Click(object sender, EventArgs e)
+        {
+            IMUState state = await _drone.GetCurrentIMUState();
+            MessageBox.Show(state.ToString());
+        }
+
+        private async void button15_Click(object sender, EventArgs e)
+        {
+            await _drone.StartCollectingIMUState(1000);
+        }
+
+        private async void button16_Click(object sender, EventArgs e)
+        {
+            await _drone.StopCollectingIMUState();
+        }
+
+        private async void button17_Click(object sender, EventArgs e)
+        {
+            await _drone.ClearCollectedIMUStates();
+        }
+
+        private async void button18_Click(object sender, EventArgs e)
+        {
+            IMUState[] states = await _drone.GetCollectedIMUStates();
+
+            for (int i = 0; i < states.Length; i++)
+            {
+                if (i > 5)
+                {
+                    MessageBox.Show("More than 5 states, cutting off here.");
+                    break;
+                }
+
+                MessageBox.Show(states[i].ToString());
+            }
         }
     }
 }

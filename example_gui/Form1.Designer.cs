@@ -49,6 +49,12 @@
             velocProfCombo = new ComboBox();
             button12 = new Button();
             button13 = new Button();
+            button14 = new Button();
+            button15 = new Button();
+            button16 = new Button();
+            label1 = new Label();
+            button17 = new Button();
+            button18 = new Button();
             SuspendLayout();
             // 
             // ipAddrTextBox
@@ -251,11 +257,76 @@
             button13.UseVisualStyleBackColor = true;
             button13.Click += button13_Click;
             // 
+            // button14
+            // 
+            button14.Location = new Point(12, 415);
+            button14.Name = "button14";
+            button14.Size = new Size(177, 23);
+            button14.TabIndex = 21;
+            button14.Text = "Get Current IMU State";
+            button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
+            // 
+            // button15
+            // 
+            button15.Location = new Point(12, 274);
+            button15.Name = "button15";
+            button15.Size = new Size(177, 23);
+            button15.TabIndex = 22;
+            button15.Text = "Start Collecting IMU States";
+            button15.UseVisualStyleBackColor = true;
+            button15.Click += button15_Click;
+            // 
+            // button16
+            // 
+            button16.Location = new Point(12, 303);
+            button16.Name = "button16";
+            button16.Size = new Size(177, 23);
+            button16.TabIndex = 23;
+            button16.Text = "Stop Collecting IMU States";
+            button16.UseVisualStyleBackColor = true;
+            button16.Click += button16_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(195, 278);
+            label1.Name = "label1";
+            label1.Size = new Size(89, 15);
+            label1.TabIndex = 24;
+            label1.Text = "1000ms interval";
+            // 
+            // button17
+            // 
+            button17.Location = new Point(12, 332);
+            button17.Name = "button17";
+            button17.Size = new Size(177, 23);
+            button17.TabIndex = 25;
+            button17.Text = "Clear Collected IMU States";
+            button17.UseVisualStyleBackColor = true;
+            button17.Click += button17_Click;
+            // 
+            // button18
+            // 
+            button18.Location = new Point(12, 361);
+            button18.Name = "button18";
+            button18.Size = new Size(177, 23);
+            button18.TabIndex = 26;
+            button18.Text = "Get Collected IMU States";
+            button18.UseVisualStyleBackColor = true;
+            button18.Click += button18_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button18);
+            Controls.Add(button17);
+            Controls.Add(label1);
+            Controls.Add(button16);
+            Controls.Add(button15);
+            Controls.Add(button14);
             Controls.Add(velocProfCombo);
             Controls.Add(button12);
             Controls.Add(button13);
@@ -307,5 +378,11 @@
         private ComboBox velocProfCombo;
         private Button button12;
         private Button button13;
+        private Button button14;
+        private Button button15;
+        private Button button16;
+        private Label label1;
+        private Button button17;
+        private Button button18;
     }
 }

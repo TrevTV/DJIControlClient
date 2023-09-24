@@ -205,5 +205,48 @@ namespace DJIControlClient
         }
 
         #endregion
+
+        #region IMU
+
+        public async Task StartCollectingIMUState(int interval)
+        {
+            CommandCompleted result = await Call($"startCollectingIMUState/{interval}");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task StopCollectingIMUState()
+        {
+            CommandCompleted result = await Call("stopCollectingIMUState");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task<IMUState[]> GetCollectedIMUStates()
+        {
+            CommandCompleted<IMUState[]> result = await Call<IMUState[]>("getCollectedIMUStates");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        public async Task ClearCollectedIMUStates()
+        {
+            CommandCompleted result = await Call("clearCollectedIMUStates");
+            if (!result.Completed)
+                throw result.ParseError();
+        }
+
+        public async Task<IMUState> GetCurrentIMUState()
+        {
+            CommandCompleted<IMUState> result = await Call<IMUState>("getCurrentIMUState");
+            if (!result.Completed)
+                throw result.ParseError();
+
+            return result.State;
+        }
+
+        #endregion
     }
 }
