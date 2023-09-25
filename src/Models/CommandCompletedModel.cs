@@ -32,7 +32,7 @@ namespace DJIControlClient.Models
 
             return err switch
             {
-                { } when err.StartsWith("not available") => new NotAvailableException(ErrorDescription),
+                { } when err.Contains("not available") => new NotAvailableException(ErrorDescription),
                 { } when err.StartsWith("reboot error: ") => new RebootException(ErrorDescription[14..]),
                 { } when err.StartsWith("invalid value for interval") => new ArgumentException(ErrorDescription),
                 { } when err.Contains("no") && err.Contains("provided") => new ArgumentException(ErrorDescription),
